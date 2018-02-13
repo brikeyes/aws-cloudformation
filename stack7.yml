@@ -1,0 +1,383 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Launch ec2 instance and install docker
+Parameters:
+  mykeyname:
+    Type: String
+  sgipaddress:
+    Type: String
+Resources:
+  AppNode:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 88bd27cf-4ef4-47e7-8088-658dbb4cef1a
+  AppNode1:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      Tags:
+        - Key: keyname1
+          Value: value1
+        - Key: keyname2
+          Value: value2
+        - Key: Name
+          Value: ddddvalue2
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: e8eb2fdd-256f-46f6-8843-b4c63e8d0f2f
+  AppNode2:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 25e324aa-60a2-4c2d-9487-52a834bdbf43
+  AppNode3:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: c8dc2c44-0610-4987-be2b-bf083bf0bc06
+  AppNode7:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: cd61bd07-d61f-4488-9779-6d00a037858d
+  AppNode4:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: c5cd6c60-687b-4b2c-b90f-bbc07136ba70
+  AppNode5:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 5a37aebe-2a60-4a81-a998-1b97e1a40690
+  AppNode6:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 >
+        #!/bin/bash
+
+        apt-get update -qq
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+        add -
+
+        add-apt-repository "deb [arch=amd64]
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        apt-get update -qq
+
+        apt-cache policy docker-ce
+
+        apt-get install -y docker-ce
+
+        usermod -aG docker ubuntu
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 6e203c8c-af3b-4493-b5ea-031f0cf0d66b
+  AppNodeSG:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: something
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: !Ref sgipaddress
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: !Ref sgipaddress
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: e6768ca3-bd02-4561-9275-8b31b5e082e5
+  GUICREATED:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-d15a75c7
+      SecurityGroupIds:
+        - !Ref AppNodeSG
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 1997fde3-3a6a-45b3-9ca4-4111a3798ba9
+Metadata:
+  'AWS::CloudFormation::Designer':
+    e6768ca3-bd02-4561-9275-8b31b5e082e5:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        'y': 90
+      z: 1
+      embeds: []
+    6e203c8c-af3b-4493-b5ea-031f0cf0d66b:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 180
+        'y': 90
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    5a37aebe-2a60-4a81-a998-1b97e1a40690:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        'y': 210
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    c5cd6c60-687b-4b2c-b90f-bbc07136ba70:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 180
+        'y': 210
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    cd61bd07-d61f-4488-9779-6d00a037858d:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 300
+        'y': 90
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    c8dc2c44-0610-4987-be2b-bf083bf0bc06:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 300
+        'y': 210
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    25e324aa-60a2-4c2d-9487-52a834bdbf43:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        'y': 330
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    e8eb2fdd-256f-46f6-8843-b4c63e8d0f2f:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 180
+        'y': 330
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    88bd27cf-4ef4-47e7-8088-658dbb4cef1a:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 300
+        'y': 330
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5
+    1997fde3-3a6a-45b3-9ca4-4111a3798ba9:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 430
+        'y': 120
+      z: 1
+      embeds: []
+      isassociatedwith:
+        - e6768ca3-bd02-4561-9275-8b31b5e082e5

@@ -1,0 +1,166 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Launch ec2 instance and install docker
+Parameters:
+  mykeyname:
+    Type: String
+  sgipaddress:
+    Type: String
+Resources:
+  AppNode:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode3:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode4:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode4:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode5:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+  AppNode6:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId:  ami-d15a75c7
+      KeyName: !Ref mykeyname
+      Tags:
+        
+          Key: "keyname1"
+          Value: "value1"
+
+          Key: "keyname2"
+          Value: "value2
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        apt-get update -qq
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        apt-get update -qq
+        apt-cache policy docker-ce
+        apt-get install -y docker-ce
+        usermod -aG docker ubuntu
+
+
+  AppNodeSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: something
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: !Ref sgipaddress
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: !Ref sgipaddress
